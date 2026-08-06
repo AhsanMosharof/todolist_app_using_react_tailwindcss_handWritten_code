@@ -1,16 +1,31 @@
-# React + Vite
+# iTask - React Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A simple, fast, and responsive Todo List application built with React, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Add Tasks**: Easily create new tasks.
+- **Edit Tasks**: Modify existing tasks seamlessly.
+- **Delete Tasks**: Remove tasks you no longer need.
+- **Mark as Complete**: Check off tasks to mark them as completed (adds a strikethrough effect).
+- **Persistent Storage**: All your tasks are automatically saved in the browser's `localStorage`, meaning you won't lose your data even if you refresh or close the page.
+- **Unique Task IDs**: Uses `uuid` to generate robust unique identifiers for every task.
+- **Responsive UI**: Styled beautifully with Tailwind CSS for an optimal experience on both desktop and mobile screens.
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS v4](https://tailwindcss.com/)
+- [UUID](https://www.npmjs.com/package/uuid) for unique identifiers
 
-## Expanding the Oxlint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Run the development server:
+   ```bash
+   npm run dev
+   ```
