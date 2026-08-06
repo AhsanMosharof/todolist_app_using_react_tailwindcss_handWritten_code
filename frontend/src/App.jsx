@@ -1,6 +1,6 @@
 import './App.css'
 import Navbar from './component/navbar'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 
 function App() {
@@ -10,14 +10,14 @@ function App() {
 
   useEffect(() => {
 
-    let todoString= localStorage.getItem("todos")
-    if(todoString){
-     let todos=JSON.parse(localStorage.getItem("todos"))
+    let todoString = localStorage.getItem("todos")
+    if (todoString) {
+      let todos = JSON.parse(localStorage.getItem("todos"))
 
       setTodos(todos);
     }
-  },[])
-  
+  }, [])
+
 
 
   const saveToLS = (newTodos) => {
@@ -79,7 +79,7 @@ function App() {
 
             <div className="flex gap-2">
 
-       
+
 
               <input onChange={changeHandler} value={todo} type="text" className='w-full rounded-md px-3 py-1 bg-white text-black outline-none focus:ring-2 focus:ring-indigo-500' placeholder="Enter a new task " />
 
