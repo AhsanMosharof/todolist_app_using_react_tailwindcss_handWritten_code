@@ -1,45 +1,61 @@
 import './App.css'
 import Navbar from './component/navbar'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid';
+
 function App() {
 
   const [todo, setTodo] = useState("")
   const [todos, setTodos] = useState([])
 
+  useEffect(() => {
+
+    let todoString= localStorage.getItem("todos")
+    if(todoString){
+     let todos=JSON.parse(localStorage.getItem("todos"))
+
+      setTodos(todos);
+    }
+  },[])
+  
+
+
+  const saveToLS = (newTodos) => {
+    localStorage.setItem("todos", JSON.stringify(newTodos))
+  }
+
   const handleAdd = () => {
-    setTodos([...todos, { id: uuidv4(), todo, iscompleted: false }])
-    setTodo("")
+    let newTodos = [...todos, { id: uuidv4(), todo, iscompleted: false }];
+    setTodos(newTodos);
+    setTodo("");
+    saveToLS(newTodos);
   }
 
   const changeHandler = (e) => {
-
     setTodo(e.target.value)
-
   }
 
   const handleCheckbox = (e) => {
-    
-
-    let id=e.target.name;
-    let index= todos.findIndex(item=> item.id===id);
-    let newTodos= [...todos]
-    newTodos[index].iscompleted=!newTodos[index].iscompleted;
+    let id = e.target.name;
+    let index = todos.findIndex(item => item.id === id);
+    let newTodos = [...todos]
+    newTodos[index].iscompleted = !newTodos[index].iscompleted;
     setTodos(newTodos)
-    console.log(id)
+    saveToLS(newTodos);
   }
 
-
-  const handleEdit = () => {
-    console.log("edit");
+  const handleEdit = (e, id) => {
+    let t = todos.find(item => item.id === id);
+    setTodo(t.todo);
+    let newTodos = todos.filter(item => item.id !== id);
+    setTodos(newTodos);
+    saveToLS(newTodos);
   }
-
 
   const handleDelete = (e, id) => {
-    
-    let index=todos.findIndex(item=> item.id===id);
-    let newTodos= todos.filter(item=>item.id!=id)
+    let newTodos = todos.filter(item => item.id != id)
     setTodos(newTodos);
+    saveToLS(newTodos);
   }
 
 
